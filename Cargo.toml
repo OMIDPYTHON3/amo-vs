@@ -1,0 +1,64 @@
+[package]
+name = "amo-vs"
+version = "0.1.0"
+edition = "2021"
+description = "AMO VS - A professional cross-platform terminal code editor with a Visual Studio Code inspired interface"
+license = "MIT"
+repository = "https://github.com/OMIDPYTHON3/amo-vs"
+authors = ["AMO VS Contributors"]
+readme = "README.md"
+
+[[bin]]
+name = "amo-vs"
+path = "src/main.rs"
+
+[lib]
+name = "amo_vs"
+path = "src/lib.rs"
+
+[dependencies]
+# Terminal UI
+ratatui = { version = "0.27.0", features = ["serde"] }
+crossterm = { version = "0.27.0", features = ["event-stream"] }
+
+# Text buffer & syntax
+ropey = "1.6.1"
+tree-sitter = "0.22.6"
+tree-sitter-rust = "0.21.2"
+tree-sitter-javascript = "0.21.0"
+tree-sitter-python = "0.21.0"
+
+# Async runtime (used for the integrated terminal reader & periodic services)
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync", "signal"] }
+futures = "0.3"
+
+# Configuration & serialization
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+
+# Git integration (local operations only; avoids pulling in TLS/network deps)
+git2 = { version = "0.20", default-features = false }
+
+# Pseudo terminal for the integrated terminal (Unix PTY + Windows ConPTY)
+portable-pty = "0.8"
+
+# Utilities
+unicode-width = "0.1"
+dirs = "5"
+ignore = "0.4"
+anyhow = "1"
+log = "0.4"
+libc = "0.2"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.dev]
+opt-level = 1

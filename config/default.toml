@@ -1,0 +1,35 @@
+# Default AMO VS settings.
+# Copy to your user config directory as settings.toml and edit as needed.
+
+theme = "Dark+ (default dark)"
+tab_size = 4
+insert_spaces = true
+autosave = false
+autosave_delay_ms = 1000
+show_line_numbers = true
+show_whitespace = false
+highlight_current_line = true
+bracket_matching = true
+auto_indent = true
+word_wrap = false
+minimap = true
+render_icons = true
+git_enabled = true
+status_bar_visible = true
+sidebar_width = 22
+panel_height = 14
+terminal_history_size = 1000
+exclude = [".git", "target", "node_modules", "__pycache__", "*.pyc"]
+# shell = "/bin/zsh"
+# icon_set = "simple"   # "simple" (default) or "nerd" for Nerd Font glyphs
+
+# Intelligent completion (buffer + workspace + language keywords)
+autocomplete = true
+autocomplete_max_items = 12
+autocomplete_workspace = true
+
+# Key bindings use "ctrl+key", "alt+key", "ctrl+shift+key" syntax.
+[keybindings]
+exit = "ctrl+esc"
+quit = "ctrl+q"
+command_palette = "f1"
